@@ -26,5 +26,12 @@ namespace Anhkheg3
         {
             this.InitializeComponent();
         }
-    }
+
+		private void Page_Loaded(object sender, RoutedEventArgs e)
+		{
+			List<int> someInts = new List<int>();
+			someInts.Add(1);
+			Vehicles.ItemsSource = someInts;
+		}
+	}
 }
