@@ -19,16 +19,18 @@
                         <StackPanel Orientation="Horizontal">
                             <Image Source="Assets/StoreLogo.png" Width="50" Height="50"/>
                             <StackPanel Orientation="Vertical" Height="50">
-                                <TextBlock Text="This is the name of the vehicle"
-                                       FontSize="20"
-                                       FontWeight="Bold"
-                                       Foreground="Green"
-                                       IsTextSelectionEnabled="True"/>
-                                <Border Background="Red">
-                                    <TextBlock Text="This is the year, make, and model of the vehicle"
-                                       Style="{StaticResource CaptionTextBlockStyle}"
-                                       IsTextSelectionEnabled="True"/>
-                                </Border>
+                                <TextBlock Text="{Binding Name}"
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Foreground="Green"
+                                    IsTextSelectionEnabled="True"/>
+                                <TextBlock
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    IsTextSelectionEnabled="True">
+                                    <Run Text="{Binding Year}"/>
+                                    <Run Text="{Binding Make}"/>
+                                    <Run Text="{Binding Model}"/>
+                                </TextBlock>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>

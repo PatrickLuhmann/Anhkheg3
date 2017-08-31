@@ -17,21 +17,41 @@ using Windows.UI.Xaml.Navigation;
 
 namespace Anhkheg3
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
-    public sealed partial class MainPage : Page
-    {
-        public MainPage()
-        {
-            this.InitializeComponent();
-        }
+	/// <summary>
+	/// An empty page that can be used on its own or navigated to within a Frame.
+	/// </summary>
+	public sealed partial class MainPage : Page
+	{
+		public MainPage()
+		{
+			this.InitializeComponent();
+		}
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
 			List<int> someInts = new List<int>();
 			someInts.Add(1);
 			Vehicles.ItemsSource = someInts;
+
+			List<Vehicle> tempVehicles = new List<Vehicle>();
+			Vehicle v1;
+			v1 = new Vehicle
+			{
+				Name = "Pumpkinmobile",
+				Year = 1978,
+				Make = "Pontiac",
+				Model = "Bonneville"
+			};
+			tempVehicles.Add(v1);
+			v1 = new Vehicle
+			{
+				Name = "The Beast",
+				Year = 2017,
+				Make = "Tesla",
+				Model = "Model X"
+			};
+			tempVehicles.Add(v1);
+			Vehicles.ItemsSource = tempVehicles;
 		}
 	}
 }
