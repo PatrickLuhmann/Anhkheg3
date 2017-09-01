@@ -50,6 +50,9 @@ namespace Anhkheg3
 
 				db.Vehicles.Add(vehicle);
 				db.SaveChanges();
+
+				// Go back to the main page.
+				this.Frame.Navigate(typeof(MainPage));
 			}
 		}
 	}
