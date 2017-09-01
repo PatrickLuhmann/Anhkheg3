@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="Anhkheg3.VehicleInfoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anhkheg3"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <CommandBar>
+                <AppBarButton Icon="Save" Label="Save" Click="SaveButton_Click"/>
+                <AppBarButton Icon="Cancel" Label="Cancel" Click="CancelButton_Click"/>
+                <CommandBar.Content>
+                    <TextBlock Name="CommandLabel" Text="Vehicle Info" />
+                </CommandBar.Content>
+            </CommandBar>
+            <TextBox x:Name="VehicleName"
+                     Header="Vehicle Name"
+                     PlaceholderText="Enter the name of the vehicle (e.g. Red Rooster)"/>
+            <TextBox x:Name="VehicleYear"
+                     Header="Vehicle Year"
+                     PlaceholderText="Enter the year of the vehicle (e.g. 1978"/>
+            <TextBox x:Name="VehicleMake"
+                     Header="Vehicle Make"
+                     PlaceholderText="Enter the make of the vehicle (e.g. Pontiac)"/>
+            <TextBox x:Name="VehicleModel"
+                     Header="Vehicle Model"
+                     PlaceholderText="Enter the model of the vehicle (e.g. Firebird)"/>
+            <TextBox x:Name="StartingMileage"
+                     Header="Starting Mileage"
+                     PlaceholderText="Enter the starting mileage of the vehicle (e.g. 1234)"/>
+        </StackPanel>
+    </Grid>
+</Page>

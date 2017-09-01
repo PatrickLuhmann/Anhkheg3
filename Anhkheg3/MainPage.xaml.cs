@@ -29,10 +29,11 @@ namespace Anhkheg3
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			List<int> someInts = new List<int>();
-			someInts.Add(1);
-			Vehicles.ItemsSource = someInts;
+		}
 
+		protected override void OnNavigatedTo(NavigationEventArgs e)
+		{
+			/*
 			List<Vehicle> tempVehicles = new List<Vehicle>();
 			Vehicle v1;
 			v1 = new Vehicle
@@ -52,6 +53,18 @@ namespace Anhkheg3
 			};
 			tempVehicles.Add(v1);
 			Vehicles.ItemsSource = tempVehicles;
+			*/
+			using (var db = new DbSchema())
+			{
+				Vehicles.ItemsSource = db.Vehicles.ToList();
+			}
+
+			base.OnNavigatedTo(e);
+		}
+
+		private void Add_Click(object sender, RoutedEventArgs e)
+		{
+			this.Frame.Navigate(typeof(VehicleInfoView));
 		}
 	}
 }

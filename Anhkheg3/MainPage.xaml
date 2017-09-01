@@ -11,7 +11,7 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel>
             <CommandBar>
-                <AppBarButton Icon="Add" Label="Add Vehicle"/>
+                <AppBarButton Icon="Add" Label="Add Vehicle" Click="Add_Click"/>
             </CommandBar>
             <ListView Name="Vehicles">
                 <ListView.ItemTemplate>
