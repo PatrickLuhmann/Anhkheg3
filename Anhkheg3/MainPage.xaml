@@ -12,6 +12,7 @@
         <StackPanel>
             <CommandBar>
                 <AppBarButton Icon="Add" Label="Add Vehicle" Click="Add_Click"/>
+                <AppBarButton Icon="Edit" Label="Edit Vehicle" Click="Edit_Click"/>
             </CommandBar>
             <ListView Name="Vehicles">
                 <ListView.ItemTemplate>

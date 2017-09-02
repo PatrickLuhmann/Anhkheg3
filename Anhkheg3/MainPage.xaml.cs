@@ -33,30 +33,10 @@ namespace Anhkheg3
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
-			/*
-			List<Vehicle> tempVehicles = new List<Vehicle>();
-			Vehicle v1;
-			v1 = new Vehicle
-			{
-				Name = "Pumpkinmobile",
-				Year = 1978,
-				Make = "Pontiac",
-				Model = "Bonneville"
-			};
-			tempVehicles.Add(v1);
-			v1 = new Vehicle
-			{
-				Name = "The Beast",
-				Year = 2017,
-				Make = "Tesla",
-				Model = "Model X"
-			};
-			tempVehicles.Add(v1);
-			Vehicles.ItemsSource = tempVehicles;
-			*/
 			using (var db = new DbSchema())
 			{
-				Vehicles.ItemsSource = db.Vehicles.ToList();
+				List<Vehicle> list = db.Vehicles.ToList();
+				Vehicles.ItemsSource = list;
 			}
 
 			base.OnNavigatedTo(e);
@@ -64,7 +44,15 @@ namespace Anhkheg3
 
 		private void Add_Click(object sender, RoutedEventArgs e)
 		{
+			// No parameter because we want a new vehicle to be created.
 			this.Frame.Navigate(typeof(VehicleInfoView));
+		}
+
+		private void Edit_Click(object sender, RoutedEventArgs e)
+		{
+			if (Vehicles.SelectedIndex != -1)
+				// Pass the current vehicle to the vehicle info view via parameter.
+				this.Frame.Navigate(typeof(VehicleInfoView), Vehicles.SelectedItem as Vehicle);
 		}
 	}
 }
