@@ -37,6 +37,26 @@ namespace Anhkheg3
 			{
 				List<Vehicle> list = db.Vehicles.ToList();
 				Vehicles.ItemsSource = list;
+
+				List<Purchase> tempPurchases = new List<Purchase>();
+				Purchase p;
+				p = new Purchase
+				{
+					Gallons = 123,
+					Cost = 45.67M,
+					Trip = 123.4M,
+					Odometer = 98765
+				};
+				tempPurchases.Add(p);
+				p = new Purchase
+				{
+					Gallons = 8.765M,
+					Cost = 23.90M,
+					Trip = 317.5M,
+					Odometer = 87654
+				};
+				tempPurchases.Add(p);
+				Purchases.ItemsSource = tempPurchases;
 			}
 
 			base.OnNavigatedTo(e);

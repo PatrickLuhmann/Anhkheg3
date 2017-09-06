@@ -54,7 +54,27 @@
             <TextBlock Text="This is a test"/>
             <TextBlock Text="Hello"/>
             <ListView Name="Purchases">
-                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Image Source="Assets/StoreLogo.png" Width="50" Height="50"/>
+                            <StackPanel Orientation="Vertical" Height="50">
+                                <TextBlock Text="{Binding Gallons}"
+                                    FontSize="20"
+                                    FontWeight="Bold"
+                                    Foreground="Green"
+                                    IsTextSelectionEnabled="False"/>
+                                <TextBlock
+                                    Style="{StaticResource CaptionTextBlockStyle}"
+                                    IsTextSelectionEnabled="False">
+                                    <Run Text="{Binding Cost}"/>
+                                    <Run Text="{Binding Trip}"/>
+                                    <Run Text="{Binding Odometer}"/>
+                                </TextBlock>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
         </StackPanel>
     </Grid>
