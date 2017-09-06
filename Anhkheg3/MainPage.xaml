@@ -9,33 +9,52 @@
     Loaded="Page_Loaded">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel>
-            <CommandBar>
-                <AppBarButton Icon="Add" Label="Add Vehicle" Click="Add_Click"/>
-                <AppBarButton Icon="Edit" Label="Edit Vehicle" Click="Edit_Click"/>
-            </CommandBar>
-            <ListView Name="Vehicles">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <Image Source="Assets/StoreLogo.png" Width="50" Height="50"/>
-                            <StackPanel Orientation="Vertical" Height="50">
-                                <TextBlock Text="{Binding Name}"
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <CommandBar Name="CmdBar" Grid.Row="0" Grid.Column="0" IsOpen="True">
+            <AppBarButton Icon="Add" Label="Add Vehicle" Click="Add_Click"/>
+            <AppBarButton Icon="Edit" Label="Edit Vehicle" Click="Edit_Click"/>
+            <AppBarButton Icon="Delete" Label="Delete Vehicle" Click="Delete_Click"/>
+        </CommandBar>
+        <CommandBar Name="CmdBar2" Grid.Row="0" Grid.Column="1">
+            <AppBarButton Icon="Add" Label="Add Purchase" Click="Add_Click"/>
+            <AppBarButton Icon="Edit" Label="Edit Purchase" Click="Edit_Click"/>
+            <AppBarButton Icon="Delete" Label="Delete Purchase" Click="Delete_Click"/>
+        </CommandBar>
+        <ListView Name="Vehicles" Grid.Row="1" Grid.Column="0">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Assets/StoreLogo.png" Width="50" Height="50"/>
+                        <StackPanel Orientation="Vertical" Height="50">
+                            <TextBlock Text="{Binding Name}"
                                     FontSize="20"
                                     FontWeight="Bold"
                                     Foreground="Green"
                                     IsTextSelectionEnabled="True"/>
-                                <TextBlock
+                            <TextBlock
                                     Style="{StaticResource CaptionTextBlockStyle}"
                                     IsTextSelectionEnabled="True">
                                     <Run Text="{Binding Year}"/>
                                     <Run Text="{Binding Make}"/>
                                     <Run Text="{Binding Model}"/>
-                                </TextBlock>
-                            </StackPanel>
+                            </TextBlock>
                         </StackPanel>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBlock Text="This is a test"/>
+            <TextBlock Text="Hello"/>
+            <ListView Name="Purchases">
+                
             </ListView>
         </StackPanel>
     </Grid>

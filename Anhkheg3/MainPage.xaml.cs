@@ -54,5 +54,10 @@ namespace Anhkheg3
 				// Pass the current vehicle to the vehicle info view via parameter.
 				this.Frame.Navigate(typeof(VehicleInfoView), Vehicles.SelectedItem as Vehicle);
 		}
+
+		private void Delete_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }
