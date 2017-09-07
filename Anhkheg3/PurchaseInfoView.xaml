@@ -1,0 +1,36 @@
+﻿<Page
+    x:Class="Anhkheg3.PurchaseInfoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Anhkheg3"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel>
+            <CommandBar>
+                <AppBarButton Icon="Save" Label="Save" Click="SaveButton_Click"/>
+                <AppBarButton Icon="Cancel" Label="Cancel" Click="CancelButton_Click"/>
+                <CommandBar.Content>
+                    <TextBlock x:Name="CommandLabel" Text="Purchase Info" />
+                </CommandBar.Content>
+            </CommandBar>
+            <CalendarDatePicker
+                Name="Date"
+                Header="Date Of Purchase"/>
+            <TextBox x:Name="Gallons"
+                     Header="Number Of Gallons"
+                     PlaceholderText="Enter the number of gallons purchased (e.g. 11.409)"/>
+            <TextBox x:Name="Cost"
+                     Header="Total Fuel Cost"
+                     PlaceholderText="Enter the total cost of the fuel purchased (e.g. 29.41"/>
+            <TextBox x:Name="Trip"
+                     Header="Trip Distance"
+                     PlaceholderText="Enter the distance of the trip (e.g. 303.6)"/>
+            <TextBox x:Name="Odometer"
+                     Header="Odometer Reading"
+                     PlaceholderText="Enter the reading of the odomoter (e.g. 65928)"/>
+        </StackPanel>
+    </Grid>
+</Page>

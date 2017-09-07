@@ -17,15 +17,15 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <CommandBar Name="CmdBar" Grid.Row="0" Grid.Column="0" IsOpen="True">
+        <CommandBar Name="CmdBar" Grid.Row="0" Grid.Column="0" IsOpen="False">
             <AppBarButton Icon="Add" Label="Add Vehicle" Click="Add_Click"/>
             <AppBarButton Icon="Edit" Label="Edit Vehicle" Click="Edit_Click"/>
             <AppBarButton Icon="Delete" Label="Delete Vehicle" Click="Delete_Click"/>
         </CommandBar>
         <CommandBar Name="CmdBar2" Grid.Row="0" Grid.Column="1">
-            <AppBarButton Icon="Add" Label="Add Purchase" Click="Add_Click"/>
-            <AppBarButton Icon="Edit" Label="Edit Purchase" Click="Edit_Click"/>
-            <AppBarButton Icon="Delete" Label="Delete Purchase" Click="Delete_Click"/>
+            <AppBarButton Icon="Add" Label="Add Purchase" Click="AddPurchse_Click"/>
+            <AppBarButton Icon="Edit" Label="Edit Purchase" Click="EditPurchase_Click"/>
+            <AppBarButton Icon="Delete" Label="Delete Purchase" Click="DeletePurchase_Click"/>
         </CommandBar>
         <ListView Name="Vehicles" Grid.Row="1" Grid.Column="0">
             <ListView.ItemTemplate>
@@ -37,10 +37,10 @@
                                     FontSize="20"
                                     FontWeight="Bold"
                                     Foreground="Green"
-                                    IsTextSelectionEnabled="True"/>
+                                    IsTextSelectionEnabled="False"/>
                             <TextBlock
                                     Style="{StaticResource CaptionTextBlockStyle}"
-                                    IsTextSelectionEnabled="True">
+                                    IsTextSelectionEnabled="False">
                                     <Run Text="{Binding Year}"/>
                                     <Run Text="{Binding Make}"/>
                                     <Run Text="{Binding Model}"/>
