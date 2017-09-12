@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.EntityFrameworkCore;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -51,7 +52,43 @@ namespace Anhkheg3
 
 		private void SaveButton_Click(object sender, RoutedEventArgs e)
 		{
+			using (var db = new DbSchema())
+			{
+				if (SelectedPurchase == null)
+				{
+					DateTimeOffset tempDate = (DateTimeOffset)Date.Date;
+					SelectedPurchase = new Purchase
+					{
+						Date = tempDate.Date,
+						Gallons = Convert.ToDecimal(Gallons.Text),
+						Cost = Convert.ToDecimal(Cost.Text),
+						Trip = Convert.ToDecimal(Trip.Text),
+						Odometer = Convert.ToInt32(Odometer.Text)
+					};
 
+					db.Purchases.Add(SelectedPurchase);
+				}
+				else
+				{
+					// Grab the info.
+					DateTimeOffset tempDate = (DateTimeOffset)Date.Date;
+					SelectedPurchase.Date = tempDate.Date;
+					SelectedPurchase.Gallons = Convert.ToDecimal(Gallons.Text);
+					SelectedPurchase.Cost = Convert.ToDecimal(Cost.Text);
+					SelectedPurchase.Trip = Convert.ToDecimal(Trip.Text);
+					SelectedPurchase.Odometer = Convert.ToInt32(Odometer.Text);
+
+					// Mark the entry as having been modified.
+					// Note that it is not worth trying to figure out if the
+					// user really changed something or not.
+					db.Entry(SelectedPurchase).State = EntityState.Modified;
+				}
+
+				db.SaveChanges();
+			}
+
+			// Go back to the main page.
+			this.Frame.Navigate(typeof(MainPage));
 		}
 
 		private void CancelButton_Click(object sender, RoutedEventArgs e)

@@ -17,7 +17,7 @@
                 </CommandBar.Content>
             </CommandBar>
             <CalendarDatePicker
-                Name="Date"
+                x:Name="Date"
                 Header="Date Of Purchase"/>
             <TextBox x:Name="Gallons"
                      Header="Number Of Gallons"

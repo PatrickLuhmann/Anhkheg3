@@ -38,27 +38,9 @@ namespace Anhkheg3
 				List<Vehicle> list = db.Vehicles.ToList();
 				Vehicles.ItemsSource = list;
 
-				List<Purchase> tempPurchases = new List<Purchase>();
-				Purchase p;
-				p = new Purchase
-				{
-					Date = new DateTime(2008, 3, 1),
-					Gallons = 123,
-					Cost = 45.67M,
-					Trip = 123.4M,
-					Odometer = 98765
-				};
-				tempPurchases.Add(p);
-				p = new Purchase
-				{
-					Date = new DateTime(2017, 9, 4),
-					Gallons = 8.765M,
-					Cost = 23.90M,
-					Trip = 317.5M,
-					Odometer = 87654
-				};
-				tempPurchases.Add(p);
-				Purchases.ItemsSource = tempPurchases;
+				// TODO: Not global list, just those for selected vehicle.
+				List<Purchase> purchList = db.Purchases.ToList();
+				Purchases.ItemsSource = purchList;
 			}
 
 			base.OnNavigatedTo(e);
@@ -84,7 +66,7 @@ namespace Anhkheg3
 
 		private void AddPurchse_Click(object sender, RoutedEventArgs e)
 		{
-
+			this.Frame.Navigate(typeof(PurchaseInfoView));
 		}
 
 		private void EditPurchase_Click(object sender, RoutedEventArgs e)
