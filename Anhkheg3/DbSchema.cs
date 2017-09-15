@@ -29,7 +29,7 @@ namespace Anhkheg3
 		public int StartingMileage { get; set; }
 		//TODO: Something for the image here
 
-		public List<Purchase> Purchases { get; set; }
+		public List<Purchase> Purchases { get; set; } = new List<Purchase>();
 	}
 
 	public class Purchase

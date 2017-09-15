@@ -103,6 +103,10 @@
     <Compile Include="Migrations\20170830211340_DbMigration01.designer.cs">
       <DependentUpon>20170830211340_DbMigration01.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20170912220648_DbMigration02.cs" />
+    <Compile Include="Migrations\20170912220648_DbMigration02.designer.cs">
+      <DependentUpon>20170912220648_DbMigration02.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DbSchemaModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseInfoView.xaml.cs">
