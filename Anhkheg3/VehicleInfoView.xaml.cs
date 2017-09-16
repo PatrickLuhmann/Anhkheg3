@@ -53,7 +53,7 @@ namespace Anhkheg3
 		private void CancelButton_Click(object sender, RoutedEventArgs e)
 		{
 			// Go back to the main page.
-			this.Frame.Navigate(typeof(MainPage));
+			this.Frame.GoBack();
 		}
 
 		private void SaveButton_Click(object sender, RoutedEventArgs e)
@@ -92,7 +92,7 @@ namespace Anhkheg3
 			}
 
 			// Go back to the main page.
-			this.Frame.Navigate(typeof(MainPage));
+			this.Frame.GoBack();
 		}
 	}
 }

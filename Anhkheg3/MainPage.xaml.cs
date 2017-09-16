@@ -23,11 +23,12 @@ namespace Anhkheg3
 	/// </summary>
 	public sealed partial class MainPage : Page
 	{
-		int CurrentVehicleIndex = -1;
+		static int CurrentVehicleIndex = -1;
 
 		public MainPage()
 		{
 			this.InitializeComponent();
+			System.Diagnostics.Debug.WriteLine("Exit: MainPage() constructor");
 		}
 
 		private void Page_Loaded(object sender, RoutedEventArgs e)
@@ -36,25 +37,15 @@ namespace Anhkheg3
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
+			System.Diagnostics.Debug.WriteLine("Enter: OnNavigatedTo");
 			using (var db = new DbSchema())
 			{
-				var list = db.Vehicles.Include(v => v.Purchases).ToList();
-				//List<Vehicle> list = db.Vehicles.ToList();
-				Vehicles.ItemsSource = list;
+				// Show list of all vehicles
+				Vehicles.ItemsSource = db.Vehicles.ToList();
 
-				// TODO: Not global list, just those for selected vehicle.
-				if (CurrentVehicleIndex == -1)
-				{
-					List<Purchase> purchList = db.Purchases.ToList();
-					Purchases.ItemsSource = purchList;
-					NumPurchasesGlobal.Text = "Global number of puchases: " + purchList.Count.ToString();
-				}
-				else
-				{
-					List<Purchase> purchList = db.Purchases.ToList();
-					Purchases.ItemsSource = purchList;
-					NumPurchasesGlobal.Text = "Global number of puchases: " + purchList.Count.ToString();
-				}
+				// Show purchases for selected vehicle, if there is one
+				if (CurrentVehicleIndex != -1)
+					Vehicles.SelectedIndex = CurrentVehicleIndex;
 			}
 
 			base.OnNavigatedTo(e);
@@ -99,9 +90,9 @@ namespace Anhkheg3
 				{
 					db.Purchases.Remove(item);
 					db.SaveChanges();
-
-					Purchases.ItemsSource = db.Purchases.ToList(); // TODO: This is wrong
 				}
+
+				Purchases.ItemsSource = GetPurchasesForVehicle(Vehicles.SelectedItem as Vehicle);
 			}
 		}
 
@@ -110,35 +101,20 @@ namespace Anhkheg3
 			List<Purchase> purchList;
 			using (var db = new DbSchema())
 			{
-				Vehicle tgt = db.Vehicles.Find(veh.ID);
-				var temp1 = db.Purchases.Where(p => p.Vehicle == tgt);
-				purchList = temp1.ToList();
+				purchList = db.Purchases.Where(p => p.Vehicle == veh).ToList();
 			}
 			return purchList;
 		}
 
 		private void Vehicles_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
+			System.Diagnostics.Debug.WriteLine("Enter: Vehicles_SelectionChanged");
+
 			CurrentVehicleIndex = Vehicles.SelectedIndex;
 			Vehicle selVehicle = Vehicles.SelectedItem as Vehicle;
 			HeaderText.Text = "Purchases For " + selVehicle.Name;
 			NumPurchases.Text = "This vehicle has " + selVehicle.Purchases.Count.ToString() + " fuel purchases";
-#if false
-
-			using (var db = new DbSchema())
-			{
-				Vehicle tgt = db.Vehicles.Find(selVehicle.ID);
-				//var temp1 = db.Purchases.Where(p => p.Vehicle == null);
-				var temp1 = db.Purchases.Where(p => p.Vehicle == tgt);
-				List<Purchase> purchList = temp1.ToList();
-				//List<Purchase> purchList = db.Purchases.ToList();
-				Purchases.ItemsSource = purchList;
-			}
-#else
 			Purchases.ItemsSource = GetPurchasesForVehicle(selVehicle);
-#endif
 		}
-
-
 	}
 }
