@@ -27,7 +27,8 @@
             <AppBarButton Icon="Edit" Label="Edit Purchase" Click="EditPurchase_Click"/>
             <AppBarButton Icon="Delete" Label="Delete Purchase" Click="DeletePurchase_Click"/>
         </CommandBar>
-        <ListView Name="Vehicles" Grid.Row="1" Grid.Column="0">
+        <ListView Name="Vehicles" Grid.Row="1" Grid.Column="0"
+                  SelectionChanged="Vehicles_SelectionChanged">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -51,8 +52,9 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="1" Grid.Column="1">
-            <TextBlock Text="This is a test"/>
-            <TextBlock Text="Hello"/>
+            <TextBlock x:Name="NumPurchasesGlobal" Text="Number of purchases global"/>
+            <TextBlock x:Name="NumPurchases" Text="This is a test"/>
+            <TextBlock x:Name="HeaderText" Text="Hello"/>
             <ListView Name="Purchases">
                 <ListView.ItemTemplate>
                     <DataTemplate>

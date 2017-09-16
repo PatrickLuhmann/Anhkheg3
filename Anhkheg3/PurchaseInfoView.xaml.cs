@@ -23,6 +23,7 @@ namespace Anhkheg3
 	/// </summary>
 	public sealed partial class PurchaseInfoView : Page
 	{
+		Vehicle SelectedVehicle;
 		Purchase SelectedPurchase;
 
 		public PurchaseInfoView()
@@ -32,20 +33,22 @@ namespace Anhkheg3
 
 		protected override void OnNavigatedTo(NavigationEventArgs e)
 		{
-			if (e.Parameter == null)
+			if (e.Parameter is Vehicle)
 			{
 				SelectedPurchase = null;
-				CommandLabel.Text = "Add New Fuel Purchase";
+				SelectedVehicle = e.Parameter as Vehicle;
+				CommandLabel.Text = "Add New Fuel Purchase For " + SelectedVehicle.Name;
 			}
 			else
 			{
 				SelectedPurchase = e.Parameter as Purchase;
+				SelectedVehicle = SelectedPurchase.Vehicle;
 				Date.Date = SelectedPurchase.Date;
 				Gallons.Text = SelectedPurchase.Gallons.ToString();
 				Cost.Text = SelectedPurchase.Cost.ToString();
 				Trip.Text = SelectedPurchase.Trip.ToString();
 				Odometer.Text = SelectedPurchase.Odometer.ToString();
-				CommandLabel.Text = "Edit Purchase On " + SelectedPurchase.Date.ToString();
+				CommandLabel.Text = "Edit Purchase For " + SelectedVehicle.Name + " On " + SelectedPurchase.Date.ToString();
 			}
 			base.OnNavigatedTo(e);
 		}
@@ -65,8 +68,18 @@ namespace Anhkheg3
 						Trip = Convert.ToDecimal(Trip.Text),
 						Odometer = Convert.ToInt32(Odometer.Text)
 					};
+					// This is required but I don't know why. If I try to do
+					// the Add directly on SelectedVehicle, the database doesn't
+					// get modified at all. It is as if the Vehicle objects in the
+					// list view are not the same as the Vehicle objects in the database;
+					// something is missing that allows the database code to function
+					// as expected.
+					Vehicle tgt = db.Vehicles.Include(v => v.Purchases).Single(v => v.ID == SelectedVehicle.ID);
+					//					Vehicle tgt = db.Vehicles.Find(SelectedVehicle.ID);
+					//SelectedPurchase.Vehicle = tgt;
+					tgt.Purchases.Add(SelectedPurchase);
 
-					db.Purchases.Add(SelectedPurchase);
+					//db.Purchases.Add(SelectedPurchase);
 				}
 				else
 				{

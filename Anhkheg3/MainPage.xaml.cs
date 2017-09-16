@@ -12,6 +12,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.EntityFrameworkCore;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,6 +23,8 @@ namespace Anhkheg3
 	/// </summary>
 	public sealed partial class MainPage : Page
 	{
+		int CurrentVehicleIndex = -1;
+
 		public MainPage()
 		{
 			this.InitializeComponent();
@@ -35,12 +38,23 @@ namespace Anhkheg3
 		{
 			using (var db = new DbSchema())
 			{
-				List<Vehicle> list = db.Vehicles.ToList();
+				var list = db.Vehicles.Include(v => v.Purchases).ToList();
+				//List<Vehicle> list = db.Vehicles.ToList();
 				Vehicles.ItemsSource = list;
 
 				// TODO: Not global list, just those for selected vehicle.
-				List<Purchase> purchList = db.Purchases.ToList();
-				Purchases.ItemsSource = purchList;
+				if (CurrentVehicleIndex == -1)
+				{
+					List<Purchase> purchList = db.Purchases.ToList();
+					Purchases.ItemsSource = purchList;
+					NumPurchasesGlobal.Text = "Global number of puchases: " + purchList.Count.ToString();
+				}
+				else
+				{
+					List<Purchase> purchList = db.Purchases.ToList();
+					Purchases.ItemsSource = purchList;
+					NumPurchasesGlobal.Text = "Global number of puchases: " + purchList.Count.ToString();
+				}
 			}
 
 			base.OnNavigatedTo(e);
@@ -66,7 +80,8 @@ namespace Anhkheg3
 
 		private void AddPurchse_Click(object sender, RoutedEventArgs e)
 		{
-			this.Frame.Navigate(typeof(PurchaseInfoView));
+			if (Vehicles.SelectedIndex != -1)
+				this.Frame.Navigate(typeof(PurchaseInfoView), Vehicles.SelectedItem as Vehicle);
 		}
 
 		private void EditPurchase_Click(object sender, RoutedEventArgs e)
@@ -77,7 +92,53 @@ namespace Anhkheg3
 
 		private void DeletePurchase_Click(object sender, RoutedEventArgs e)
 		{
+			Purchase item = (Purchase)Purchases.SelectedItem;
+			if (item != null)
+			{
+				using (var db = new DbSchema())
+				{
+					db.Purchases.Remove(item);
+					db.SaveChanges();
 
+					Purchases.ItemsSource = db.Purchases.ToList(); // TODO: This is wrong
+				}
+			}
 		}
+
+		private List<Purchase> GetPurchasesForVehicle(Vehicle veh)
+		{
+			List<Purchase> purchList;
+			using (var db = new DbSchema())
+			{
+				Vehicle tgt = db.Vehicles.Find(veh.ID);
+				var temp1 = db.Purchases.Where(p => p.Vehicle == tgt);
+				purchList = temp1.ToList();
+			}
+			return purchList;
+		}
+
+		private void Vehicles_SelectionChanged(object sender, SelectionChangedEventArgs e)
+		{
+			CurrentVehicleIndex = Vehicles.SelectedIndex;
+			Vehicle selVehicle = Vehicles.SelectedItem as Vehicle;
+			HeaderText.Text = "Purchases For " + selVehicle.Name;
+			NumPurchases.Text = "This vehicle has " + selVehicle.Purchases.Count.ToString() + " fuel purchases";
+#if false
+
+			using (var db = new DbSchema())
+			{
+				Vehicle tgt = db.Vehicles.Find(selVehicle.ID);
+				//var temp1 = db.Purchases.Where(p => p.Vehicle == null);
+				var temp1 = db.Purchases.Where(p => p.Vehicle == tgt);
+				List<Purchase> purchList = temp1.ToList();
+				//List<Purchase> purchList = db.Purchases.ToList();
+				Purchases.ItemsSource = purchList;
+			}
+#else
+			Purchases.ItemsSource = GetPurchasesForVehicle(selVehicle);
+#endif
+		}
+
+
 	}
 }
