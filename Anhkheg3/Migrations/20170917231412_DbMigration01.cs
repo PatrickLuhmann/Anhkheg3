@@ -36,23 +36,23 @@ namespace Anhkheg3.Migrations
                     Gallons = table.Column<decimal>(nullable: false),
                     Odometer = table.Column<int>(nullable: false),
                     Trip = table.Column<decimal>(nullable: false),
-                    VehicleID = table.Column<int>(nullable: true)
+                    VehicleId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Purchases", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Purchases_Vehicles_VehicleID",
-                        column: x => x.VehicleID,
+                        name: "FK_Purchases_Vehicles_VehicleId",
+                        column: x => x.VehicleId,
                         principalTable: "Vehicles",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Purchases_VehicleID",
+                name: "IX_Purchases_VehicleId",
                 table: "Purchases",
-                column: "VehicleID");
+                column: "VehicleId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

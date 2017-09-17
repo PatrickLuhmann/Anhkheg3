@@ -42,6 +42,7 @@ namespace Anhkheg3
 		public decimal Trip { get; set; }
 		public int Odometer { get; set; }
 
+		public int VehicleId { get; set; }
 		public Vehicle Vehicle { get; set; }
 	}
 }

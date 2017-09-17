@@ -30,11 +30,11 @@ namespace Anhkheg3.Migrations
 
                     b.Property<decimal>("Trip");
 
-                    b.Property<int?>("VehicleID");
+                    b.Property<int>("VehicleId");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("VehicleID");
+                    b.HasIndex("VehicleId");
 
                     b.ToTable("Purchases");
                 });
@@ -61,9 +61,10 @@ namespace Anhkheg3.Migrations
 
             modelBuilder.Entity("Anhkheg3.Purchase", b =>
                 {
-                    b.HasOne("Anhkheg3.Vehicle")
+                    b.HasOne("Anhkheg3.Vehicle", "Vehicle")
                         .WithMany("Purchases")
-                        .HasForeignKey("VehicleID");
+                        .HasForeignKey("VehicleId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
         }
     }

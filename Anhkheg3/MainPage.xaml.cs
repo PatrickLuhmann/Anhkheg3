@@ -66,7 +66,18 @@ namespace Anhkheg3
 
 		private void Delete_Click(object sender, RoutedEventArgs e)
 		{
+			Vehicle veh = Vehicles.SelectedItem as Vehicle;
+			if (veh != null)
+			{
+				using (var db = new DbSchema())
+				{
+					db.Vehicles.Remove(veh);
+					db.SaveChanges();
+					Vehicles.ItemsSource = db.Vehicles.ToList();
+				}
 
+				Vehicles.SelectedIndex = -1;
+			}
 		}
 
 		private void AddPurchse_Click(object sender, RoutedEventArgs e)
@@ -111,10 +122,23 @@ namespace Anhkheg3
 			System.Diagnostics.Debug.WriteLine("Enter: Vehicles_SelectionChanged");
 
 			CurrentVehicleIndex = Vehicles.SelectedIndex;
-			Vehicle selVehicle = Vehicles.SelectedItem as Vehicle;
-			HeaderText.Text = "Purchases For " + selVehicle.Name;
-			NumPurchases.Text = "This vehicle has " + selVehicle.Purchases.Count.ToString() + " fuel purchases";
-			Purchases.ItemsSource = GetPurchasesForVehicle(selVehicle);
+			if (CurrentVehicleIndex == -1)
+			{
+				HeaderText.Text = "";
+				NumPurchases.Text = "";
+				Purchases.ItemsSource = null;
+			}
+			else
+			{
+				using (var db = new DbSchema())
+				{
+					NumPurchasesGlobal.Text = "Global purchases: " + db.Purchases.Count().ToString();
+				}
+				Vehicle selVehicle = Vehicles.SelectedItem as Vehicle;
+				HeaderText.Text = "Purchases For " + selVehicle.Name;
+				NumPurchases.Text = "This vehicle has " + selVehicle.Purchases.Count.ToString() + " fuel purchases";
+				Purchases.ItemsSource = GetPurchasesForVehicle(selVehicle);
+			}
 		}
 	}
 }
