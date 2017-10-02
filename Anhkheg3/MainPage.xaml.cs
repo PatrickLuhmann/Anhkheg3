@@ -18,6 +18,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Anhkheg3
 {
+	public class SFC : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, string language)
+		{
+			var format = parameter as string;
+			if (!String.IsNullOrEmpty(format))
+				return String.Format(format, value);
+
+			return value;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, string language)
+		{
+			throw new NotImplementedException();
+		}
+	}
+
 	/// <summary>
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
@@ -107,8 +124,8 @@ namespace Anhkheg3
 					db.SaveChanges();
 				}
 
-				Purchases.ItemsSource = GetPurchasesForVehicle(Vehicles.SelectedItem as Vehicle);
-				Purchases2.ItemsSource = GetPurchasesForVehicle(Vehicles.SelectedItem as Vehicle);
+				Purchases.ItemsSource = GetPurchaseSummariesForVehicle(Vehicles.SelectedItem as Vehicle);
+				Purchases2.ItemsSource = GetPurchaseSummariesForVehicle(Vehicles.SelectedItem as Vehicle);
 			}
 		}
 
@@ -167,7 +184,7 @@ namespace Anhkheg3
 				HeaderText.Text = "Purchases For " + selVehicle.Name;
 				NumPurchases.Text = "This vehicle has " + selVehicle.Purchases.Count.ToString() + " fuel purchases";
 				Purchases.ItemsSource = GetPurchaseSummariesForVehicle(selVehicle);
-				Purchases2.ItemsSource = GetPurchasesForVehicle(selVehicle);
+				Purchases2.ItemsSource = GetPurchaseSummariesForVehicle(selVehicle);
 			}
 		}
 	}
