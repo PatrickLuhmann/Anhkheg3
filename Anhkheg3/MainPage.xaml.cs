@@ -89,7 +89,11 @@ namespace Anhkheg3
 		private void EditPurchase_Click(object sender, RoutedEventArgs e)
 		{
 			if (Purchases.SelectedIndex != -1)
-				this.Frame.Navigate(typeof(PurchaseInfoView), Purchases.SelectedItem as Purchase);
+			{
+				PurchaseSummary p = Purchases.SelectedItem as PurchaseSummary;
+				int purId = p.Id;
+				this.Frame.Navigate(typeof(PurchaseInfoView), purId);
+			}
 		}
 
 		private void DeletePurchase_Click(object sender, RoutedEventArgs e)
@@ -118,6 +122,29 @@ namespace Anhkheg3
 			return purchList;
 		}
 
+		private List<PurchaseSummary> GetPurchaseSummariesForVehicle(Vehicle veh)
+		{
+			List<Purchase> rawPurchases;
+			using (var db = new DbSchema())
+			{
+				rawPurchases = db.Purchases.Where(p => p.Vehicle == veh).ToList();
+			}
+			List<PurchaseSummary> purchList = new List<PurchaseSummary>();
+
+			foreach (var rp in rawPurchases)
+			{
+				PurchaseSummary newPurch = new PurchaseSummary();
+				newPurch.Date = rp.Date.ToString("yyyy-MM-dd");
+				newPurch.Gallons = rp.Gallons;
+				newPurch.Cost = rp.Cost.ToString("F");
+				newPurch.Mpg = Math.Round(rp.Trip / rp.Gallons, 1);
+				newPurch.Dpg = Math.Round(rp.Cost / rp.Gallons, 2);
+				newPurch.Id = rp.ID;
+				purchList.Add(newPurch);
+			}
+			return purchList;
+		}
+
 		private void Vehicles_SelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			System.Diagnostics.Debug.WriteLine("Enter: Vehicles_SelectionChanged");
@@ -139,9 +166,19 @@ namespace Anhkheg3
 				Vehicle selVehicle = Vehicles.SelectedItem as Vehicle;
 				HeaderText.Text = "Purchases For " + selVehicle.Name;
 				NumPurchases.Text = "This vehicle has " + selVehicle.Purchases.Count.ToString() + " fuel purchases";
-				Purchases.ItemsSource = GetPurchasesForVehicle(selVehicle);
+				Purchases.ItemsSource = GetPurchaseSummariesForVehicle(selVehicle);
 				Purchases2.ItemsSource = GetPurchasesForVehicle(selVehicle);
 			}
 		}
+	}
+
+	public class PurchaseSummary
+	{
+		public string Date { get; set; }
+		public decimal Gallons { get; set; }
+		public string Cost { get; set; }
+		public decimal Mpg { get; set; }
+		public decimal Dpg { get; set; }
+		public int Id { get; set; } // lower case because this is not a true database object
 	}
 }

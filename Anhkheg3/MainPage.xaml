@@ -117,23 +117,20 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Orientation="Horizontal">
-                            <Image Source="Assets/StoreLogo.png" Width="50" Height="50"/>
                             <TextBlock
-                                Text="{Binding Date}"
-                                Width="100"
-                                IsTextSelectionEnabled="False"/>
-                            <TextBlock Text="{Binding Gallons}"
-                                    FontSize="20"
-                                    FontWeight="Bold"
-                                    Foreground="Green"
-                                    IsTextSelectionEnabled="False"/>
-                            <TextBlock
-                                    Style="{StaticResource CaptionTextBlockStyle}"
-                                    IsTextSelectionEnabled="False">
-                                    <Run Text="{Binding Date}"/>
-                                    <Run Text="{Binding Cost}"/>
-                                    <Run Text="{Binding Trip}"/>
-                                    <Run Text="{Binding Odometer}"/>
+                                Style="{StaticResource BodyTextBlockStyle}"
+                                IsTextSelectionEnabled="False">
+                                <Run Text="On"/>
+                                <Run Text="{Binding Date}"/>
+                                <Run Text="spent $"/>
+                                <Run Text="{Binding Cost}"/>
+                                <Run Text="on"/>
+                                <Run Text="{Binding Gallons}"/>
+                                <Run Text="gallons for"/>
+                                <Run Text="{Binding Mpg}"/>
+                                <Run Text="mpg, $"/>
+                                <Run Text="{Binding Dpg}"/>
+                                <Run Text="per gallon"/>
                             </TextBlock>
                             <StackPanel Orientation="Vertical" Height="50">
                             </StackPanel>

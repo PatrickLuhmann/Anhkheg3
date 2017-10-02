@@ -41,7 +41,12 @@ namespace Anhkheg3
 			}
 			else
 			{
-				SelectedPurchase = e.Parameter as Purchase;
+				//SelectedPurchase = e.Parameter as Purchase;
+				using (var db = new DbSchema())
+				{
+					int id = (int)e.Parameter;
+					SelectedPurchase = db.Purchases.Include(p => p.Vehicle).Single(p => p.ID == id);
+				}
 				SelectedVehicle = SelectedPurchase.Vehicle;
 				Date.Date = SelectedPurchase.Date;
 				Gallons.Text = SelectedPurchase.Gallons.ToString();
