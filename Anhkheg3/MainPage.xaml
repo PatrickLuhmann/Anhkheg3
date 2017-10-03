@@ -13,7 +13,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="500"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -58,83 +58,43 @@
             <TextBlock x:Name="NumPurchasesGlobal" Text="Number of purchases global"/>
             <TextBlock x:Name="NumPurchases" Text="This is a test"/>
             <TextBlock x:Name="HeaderText" Text="Hello"/>
-            <ListView Name="Purchases">
+            <ListView Name="Purchases" ScrollViewer.VerticalScrollBarVisibility="Visible" Height="300">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
 
-                            <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <TextBlock>
-                                    <Run Text="{Binding Gallons}" FontSize="20"/>
-                                    <Run Text="g"/>
-                                </TextBlock>
-                                <TextBlock Text="{Binding Date}" FontSize="12"/>
-                            </StackPanel>
-
-                            <StackPanel Grid.Column="1" Orientation="Horizontal">
-                                <TextBlock Text="$"/>
-                                <TextBlock Text="{Binding Cost}"/>
-                            </StackPanel>
-                            
-                            <TextBlock
-                                Grid.Column="2"
-                                IsTextSelectionEnabled="False">
-                                <Run Text="{Binding Mpg}"/>
-                                <Run Text="mpg"/>
-                            </TextBlock>
-
-                            <StackPanel Grid.Column="3" Orientation="Horizontal">
-                                <TextBlock Text="$"/>
-                                <TextBlock Text="{Binding Dpg}"/>
-                                <TextBlock Text="/gal"/>
-
-                            </StackPanel>
-
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <ListView Name="Purchases2">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="150"/>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-
-                            <StackPanel Grid.Column="0" Orientation="Vertical">
-                                <TextBlock>
-                                    <Run Text="$"/>
-                                    <Run Text="{Binding Cost}" FontSize="20"/>
-                                </TextBlock>
+                            <StackPanel Grid.Column="0" Orientation="Vertical" >
+                                <TextBlock
+                                    FontSize="20"
+                                    Text="{Binding Cost, Converter={StaticResource blah}, ConverterParameter='${0}'}"/>
                                 <TextBlock Text="{Binding Date}" FontSize="12"/>
                             </StackPanel>
 
                             <TextBlock
                                 Grid.Column="1"
+                                Margin="5,5,25,5"
+                                VerticalAlignment="Center"
                                 FontSize="20"
                                 Text="{Binding Gallons, Converter={StaticResource blah}, ConverterParameter=\{0\} gal}"/>
 
                             <TextBlock
                                 Grid.Column="2"
-                                IsTextSelectionEnabled="False">
-                                <Run Text="{Binding Mpg}"/>
-                                <Run Text="mpg"/>
-                            </TextBlock>
+                                Margin="5,5,5,5"
+                                VerticalAlignment="Center"
+                                Text="{Binding Mpg, Converter={StaticResource blah}, ConverterParameter='${0} mpg'}"/>
 
-                            <TextBlock Grid.Column="3" Text="{Binding Dpg, Converter={StaticResource blah}, ConverterParameter='${0}/gal'}"/>
-
+                            <TextBlock
+                                Grid.Column="3"
+                                Margin="5,5,5,5"
+                                VerticalAlignment="Center"
+                                Text="{Binding Dpg, Converter={StaticResource blah}, ConverterParameter='${0}/gal'}"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

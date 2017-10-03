@@ -125,7 +125,6 @@ namespace Anhkheg3
 				}
 
 				Purchases.ItemsSource = GetPurchaseSummariesForVehicle(Vehicles.SelectedItem as Vehicle);
-				Purchases2.ItemsSource = GetPurchaseSummariesForVehicle(Vehicles.SelectedItem as Vehicle);
 			}
 		}
 
@@ -172,7 +171,6 @@ namespace Anhkheg3
 				HeaderText.Text = "";
 				NumPurchases.Text = "";
 				Purchases.ItemsSource = null;
-				Purchases2.ItemsSource = null;
 			}
 			else
 			{
@@ -184,7 +182,6 @@ namespace Anhkheg3
 				HeaderText.Text = "Purchases For " + selVehicle.Name;
 				NumPurchases.Text = "This vehicle has " + selVehicle.Purchases.Count.ToString() + " fuel purchases";
 				Purchases.ItemsSource = GetPurchaseSummariesForVehicle(selVehicle);
-				Purchases2.ItemsSource = GetPurchaseSummariesForVehicle(selVehicle);
 			}
 		}
 	}
