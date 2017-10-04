@@ -19,6 +19,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <CommandBar Name="CmdBar" Grid.Row="0" Grid.Column="0" IsOpen="False">
             <AppBarButton Icon="Add" Label="Add Vehicle" Click="Add_Click"/>
@@ -50,6 +51,34 @@
                                     <Run Text="{Binding Model}"/>
                             </TextBlock>
                         </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView Name="Vehicles_Binding"
+                  Grid.Column="0"
+                  Grid.Row="2"
+                  ItemsSource="{x:Bind ViewModel.MyPurchaseCollection}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Purchase">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Bind Date}"/>
+                        <TextBlock Text="{x:Bind Gallons}"/>
+                        <TextBlock Text="gallons of gasoline."/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <ListView Name="Vehicles_Binding_2"
+                  Grid.Column="1"
+                  Grid.Row="2"
+                  ItemsSource="{x:Bind ViewModel.MyPurchaseCollection}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="local:Purchase">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{x:Bind Date}"/>
+                        <TextBlock Text="{x:Bind Gallons}"/>
+                        <TextBlock Text="gallons of gasoline."/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>

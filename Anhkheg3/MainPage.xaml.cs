@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -35,6 +36,27 @@ namespace Anhkheg3
 		}
 	}
 
+    public class PurchasesCollection : ObservableCollection<Purchase> { }
+
+    public class PurchasesViewModel
+    {
+        private PurchasesCollection purchases = new PurchasesCollection();
+        public PurchasesCollection MyPurchaseCollection { get { return this.purchases; } }
+
+        public PurchasesViewModel()
+        {
+            purchases.Add(new Purchase()
+            {
+                ID = -1,
+                Cost = 123.45m,
+                Date = new DateTime(2017, 10, 4),
+                Gallons = 6.789m,
+                Odometer = 98765,
+                Trip = 432.1m
+            });
+        }
+    }
+
 	/// <summary>
 	/// An empty page that can be used on its own or navigated to within a Frame.
 	/// </summary>
@@ -42,9 +64,12 @@ namespace Anhkheg3
 	{
 		static int CurrentVehicleIndex = -1;
 
-		public MainPage()
+        PurchasesViewModel ViewModel { get; set; }
+
+        public MainPage()
 		{
 			this.InitializeComponent();
+            ViewModel = new PurchasesViewModel();
 			System.Diagnostics.Debug.WriteLine("Exit: MainPage() constructor");
 		}
 
