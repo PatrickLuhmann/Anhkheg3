@@ -9,6 +9,9 @@
     Loaded="Page_Loaded">
     <Page.Resources>
         <local:SFC x:Key="blah"/>
+        <CollectionViewSource x:Name="PurchasesCollectionView"
+                              Source="{x:Bind ViewModel.MyPurchaseCollection}"
+                              d:Source="{d:DesignData /SampleData/PurchasesCollectionSampleData.xaml}"/>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -72,14 +75,44 @@
         <ListView Name="Vehicles_Binding_2"
                   Grid.Column="1"
                   Grid.Row="2"
-                  ItemsSource="{x:Bind ViewModel.MyPurchaseCollection}">
+                  ItemsSource="{Binding Source={StaticResource PurchasesCollectionView}}">
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="local:Purchase">
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{x:Bind Date}"/>
-                        <TextBlock Text="{x:Bind Gallons}"/>
-                        <TextBlock Text="gallons of gasoline."/>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" Orientation="Vertical" >
+                            <TextBlock
+                                    FontSize="20"
+                                    Text="{Binding Cost, Converter={StaticResource blah}, ConverterParameter='${0}'}"/>
+                            <TextBlock Text="{Binding Date}" FontSize="12"/>
+                        </StackPanel>
+
+                        <TextBlock
+                                Grid.Column="1"
+                                Margin="5,5,25,5"
+                                VerticalAlignment="Center"
+                                FontSize="20"
+                                Text="{Binding Gallons, Converter={StaticResource blah}, ConverterParameter=\{0\} gal}"/>
+
+                        <TextBlock
+                                Grid.Column="2"
+                                Margin="5,5,5,5"
+                                VerticalAlignment="Center"
+                                Text="{Binding Mpg, Converter={StaticResource blah}, ConverterParameter='${0} mpg'}"/>
+
+                        <TextBlock
+                                Grid.Column="3"
+                                Margin="5,5,5,5"
+                                VerticalAlignment="Center"
+                                Text="{Binding Dpg, Converter={StaticResource blah}, ConverterParameter='${0}/gal'}"/>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
