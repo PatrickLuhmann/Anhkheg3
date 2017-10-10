@@ -36,23 +36,37 @@ namespace Anhkheg3
 		}
 	}
 
-    public class PurchasesCollection : ObservableCollection<Purchase> { }
+    public class PurchasesCollection : ObservableCollection<PurchaseSummary> { }
 
     public class PurchasesViewModel
     {
         private PurchasesCollection purchases = new PurchasesCollection();
-        public PurchasesCollection MyPurchaseCollection { get { return this.purchases; } }
+        public PurchasesCollection blah { get; set; }
+        public PurchasesCollection MyPurchaseCollection
+        {
+            get { return this.purchases; }
+        }
+
+        public void SetNewList(List<PurchaseSummary> list)
+        {
+            // Remove whatever was in there before.
+            purchases.Clear();
+
+            // Go through list and duplicate the items in purchases.
+            foreach (var obj in list)
+                purchases.Add(obj);
+        }
 
         public PurchasesViewModel()
         {
-            purchases.Add(new Purchase()
+            purchases.Add(new PurchaseSummary()
             {
-                ID = -1,
-                Cost = 123.45m,
-                Date = new DateTime(2017, 10, 4),
+                Id = -1,
+                Cost = "123.45",
+                Date = new DateTime(2017, 10, 4).ToString(),
                 Gallons = 6.789m,
-                Odometer = 98765,
-                Trip = 432.1m
+                Mpg = 45.2m,
+                Dpg = 18.18m
             });
         }
     }
@@ -207,6 +221,7 @@ namespace Anhkheg3
 				HeaderText.Text = "Purchases For " + selVehicle.Name;
 				NumPurchases.Text = "This vehicle has " + selVehicle.Purchases.Count.ToString() + " fuel purchases";
 				Purchases.ItemsSource = GetPurchaseSummariesForVehicle(selVehicle);
+                ViewModel.SetNewList(GetPurchaseSummariesForVehicle(selVehicle));
 			}
 		}
 	}

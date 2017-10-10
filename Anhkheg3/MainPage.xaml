@@ -63,7 +63,7 @@
                   Grid.Row="2"
                   ItemsSource="{x:Bind ViewModel.MyPurchaseCollection}">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Purchase">
+                <DataTemplate x:DataType="local:PurchaseSummary">
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{x:Bind Date}"/>
                         <TextBlock Text="{x:Bind Gallons}"/>
@@ -72,12 +72,12 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView Name="Vehicles_Binding_2"
+        <ListView Name="Purchases_Binding_2"
                   Grid.Column="1"
                   Grid.Row="2"
                   ItemsSource="{Binding Source={StaticResource PurchasesCollectionView}}">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:Purchase">
+                <DataTemplate x:DataType="local:PurchaseSummary">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
