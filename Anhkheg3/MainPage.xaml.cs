@@ -41,7 +41,6 @@ namespace Anhkheg3
     public class PurchasesViewModel
     {
         private PurchasesCollection purchases = new PurchasesCollection();
-        public PurchasesCollection blah { get; set; }
         public PurchasesCollection MyPurchaseCollection
         {
             get { return this.purchases; }
@@ -64,9 +63,9 @@ namespace Anhkheg3
                 Id = -1,
                 Cost = "123.45",
                 Date = new DateTime(2017, 10, 4).ToString(),
-                Gallons = 6.789m,
-                Mpg = 45.2m,
-                Dpg = 18.18m
+                Gallons = "6.789",
+                Mpg = "45.2",
+                Dpg = "18.18"
             });
         }
     }
@@ -190,10 +189,10 @@ namespace Anhkheg3
 			{
 				PurchaseSummary newPurch = new PurchaseSummary();
 				newPurch.Date = rp.Date.ToString("yyyy-MM-dd");
-				newPurch.Gallons = rp.Gallons;
+				newPurch.Gallons = rp.Gallons.ToString();
 				newPurch.Cost = rp.Cost.ToString("F");
-				newPurch.Mpg = Math.Round(rp.Trip / rp.Gallons, 1);
-				newPurch.Dpg = Math.Round(rp.Cost / rp.Gallons, 2);
+				newPurch.Mpg = Math.Round(rp.Trip / rp.Gallons, 1).ToString();
+				newPurch.Dpg = Math.Round(rp.Cost / rp.Gallons, 2).ToString();
 				newPurch.Id = rp.ID;
 				purchList.Add(newPurch);
 			}
@@ -229,10 +228,10 @@ namespace Anhkheg3
 	public class PurchaseSummary
 	{
 		public string Date { get; set; }
-		public decimal Gallons { get; set; }
+		public string Gallons { get; set; }
 		public string Cost { get; set; }
-		public decimal Mpg { get; set; }
-		public decimal Dpg { get; set; }
+		public string Mpg { get; set; }
+		public string Dpg { get; set; }
 		public int Id { get; set; } // lower case because this is not a true database object
 	}
 }

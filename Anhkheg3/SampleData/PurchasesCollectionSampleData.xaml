@@ -1,112 +1,12 @@
-﻿<Anhkheg3:PurchasesCollection xmlns:Anhkheg3="using:Anhkheg3" xmlns:System="using:System">
-    <Anhkheg3:PurchaseSummary Cost="$300" Date="November 5, 2003" Id="83" >
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
-    <Anhkheg3:PurchaseSummary Cost="$10,999" Date="December 29, 2006" Id="58">
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
-    <Anhkheg3:PurchaseSummary Cost="$49.99" Date="January 19, 2004" Id="68">
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
-    <Anhkheg3:PurchaseSummary Cost="$25.34" Date="December 22, 2007" Id="10">
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
-    <Anhkheg3:PurchaseSummary Cost="$100" Date="August 23, 2003" Id="88">
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
-    <Anhkheg3:PurchaseSummary Cost="$29.99" Date="May 27, 2007" Id="73">
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
-    <Anhkheg3:PurchaseSummary Cost="$249.99" Date="May 24, 2006" Id="54">
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
-    <Anhkheg3:PurchaseSummary Cost="$1000" Date="September 19, 2004" Id="97">
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
-    <Anhkheg3:PurchaseSummary Cost="$300" Date="August 10, 2003" Id="16">
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
-    <Anhkheg3:PurchaseSummary Cost="$10,999" Date="September 20, 2007" Id="81">
-        <Anhkheg3:PurchaseSummary.Dpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Dpg>
-        <Anhkheg3:PurchaseSummary.Gallons>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Gallons>
-        <Anhkheg3:PurchaseSummary.Mpg>
-            <System:Decimal/>
-        </Anhkheg3:PurchaseSummary.Mpg>
-    </Anhkheg3:PurchaseSummary>
+﻿<Anhkheg3:PurchasesCollection xmlns:Anhkheg3="using:Anhkheg3">
+    <Anhkheg3:PurchaseSummary Cost="999.99" Dpg="99.99" Date="2020-12-31" Gallons="99.999" Id="45" Mpg="999.9"/>
+    <Anhkheg3:PurchaseSummary Cost="Donec duis" Dpg="$29.99" Date="Phasellus cursus curae dictum" Gallons="Praesent sed vestibulum dis lectus" Id="43" Mpg="Consequat quisque"/>
+    <Anhkheg3:PurchaseSummary Cost="Aliquam leo mus" Dpg="$249.99" Date="Vivamus adipiscing ligula" Gallons="Hac litora convallis" Id="76" Mpg="Luctus etiam nec fusce"/>
+    <Anhkheg3:PurchaseSummary Cost="Vestibulum dignissim" Dpg="$1000" Date="Amet ante arcu" Gallons="Diam accumsan per parturient mattis" Id="50" Mpg="Vestibulum sed"/>
+    <Anhkheg3:PurchaseSummary Cost="Morbi mauris eget adipiscing nulla" Dpg="$300" Date="Dictumst adipiscing parturient vestibulum" Gallons="Facilisis vestibulum fermentum blandit" Id="75" Mpg="Parturient commodo sem vestibulum vestibulum"/>
+    <Anhkheg3:PurchaseSummary Cost="Dapibus vestibulum nostra" Dpg="$10,999" Date="Fringilla proin parturient" Gallons="Habitasse montes eleifend cubilia vestibulum" Id="67" Mpg="Facilisi sit ornare platea"/>
+    <Anhkheg3:PurchaseSummary Cost="Habitant sapien" Dpg="$49.99" Date="Primis euismod adipiscing" Gallons="Hendrerit rutrum nam" Id="95" Mpg="Dolor himenaeos"/>
+    <Anhkheg3:PurchaseSummary Cost="Est semper fames erat" Dpg="$25.34" Date="Enim malesuada" Gallons="Parturient inceptos dis" Id="24" Mpg="Interdum penatibus sociis porttitor eros"/>
+    <Anhkheg3:PurchaseSummary Cost="Nunc vestibulum tincidunt tempor" Dpg="$100" Date="Vestibulum nisl" Gallons="Tellus lobortis" Id="25" Mpg="Tempus tristique ultricies odio orci"/>
+    <Anhkheg3:PurchaseSummary Cost="Quam parturient quis vestibulum urna" Dpg="$29.99" Date="Venenatis feugiat gravida felis" Gallons="Iaculis vulputate adipiscing nascetur" Id="22" Mpg="Turpis pharetra curabitur varius"/>
 </Anhkheg3:PurchasesCollection>
