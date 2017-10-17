@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -151,10 +152,10 @@ namespace Anhkheg3
 			{
 				PurchaseSummary newPurch = new PurchaseSummary();
 				newPurch.Date = rp.Date.ToString("yyyy-MM-dd");
-				newPurch.Gallons = rp.Gallons;
-				newPurch.Cost = rp.Cost.ToString("F");
-				newPurch.Mpg = Math.Round(rp.Trip / rp.Gallons, 1);
-				newPurch.Dpg = Math.Round(rp.Cost / rp.Gallons, 2);
+				newPurch.Gallons = rp.Gallons.ToString("F3");
+				newPurch.Cost = rp.Cost.ToString("C");
+				newPurch.Mpg = Math.Round(rp.Trip / rp.Gallons, 1).ToString("F1");
+				newPurch.Dpg = Math.Round(rp.Cost / rp.Gallons, 2).ToString("C");
 				newPurch.Id = rp.ID;
 				purchList.Add(newPurch);
 			}
@@ -189,10 +190,11 @@ namespace Anhkheg3
 	public class PurchaseSummary
 	{
 		public string Date { get; set; }
-		public decimal Gallons { get; set; }
+		public string Gallons { get; set; }
 		public string Cost { get; set; }
-		public decimal Mpg { get; set; }
-		public decimal Dpg { get; set; }
+		public string Mpg { get; set; }
+		public string Dpg { get; set; }
 		public int Id { get; set; } // lower case because this is not a true database object
 	}
+
 }

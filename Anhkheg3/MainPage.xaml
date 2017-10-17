@@ -73,7 +73,7 @@
                             <StackPanel Grid.Column="0" Orientation="Vertical" >
                                 <TextBlock
                                     FontSize="20"
-                                    Text="{Binding Cost, Converter={StaticResource blah}, ConverterParameter='${0}'}"/>
+                                    Text="{Binding Cost, Converter={StaticResource blah}, ConverterParameter=' {0}'}"/>
                                 <TextBlock Text="{Binding Date}" FontSize="12"/>
                             </StackPanel>
 
@@ -88,13 +88,13 @@
                                 Grid.Column="2"
                                 Margin="5,5,5,5"
                                 VerticalAlignment="Center"
-                                Text="{Binding Mpg, Converter={StaticResource blah}, ConverterParameter='${0} mpg'}"/>
+                                Text="{Binding Mpg, Converter={StaticResource blah}, ConverterParameter=' {0} mpg'}"/>
 
                             <TextBlock
                                 Grid.Column="3"
                                 Margin="5,5,5,5"
                                 VerticalAlignment="Center"
-                                Text="{Binding Dpg, Converter={StaticResource blah}, ConverterParameter='${0}/gal'}"/>
+                                Text="{Binding Dpg, Converter={StaticResource blah}, ConverterParameter=' {0}/gal'}"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>
