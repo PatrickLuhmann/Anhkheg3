@@ -1,0 +1,12 @@
+﻿<Anhkheg3:PurchasesCollection xmlns:Anhkheg3="using:Anhkheg3">
+    <Anhkheg3:PurchaseSummary Cost="999.99" Dpg="99.99" Date="2003-12-31" Gallons="99.999" Id="32" Mpg="99.9"/>
+    <Anhkheg3:PurchaseSummary Cost="29.99" Dpg="29.99" Date="2006-12-29" Gallons="1.234" Id="69" Mpg="1"/>
+    <Anhkheg3:PurchaseSummary Cost="249.99" Dpg="249.99" Date="2004-01-19" Gallons="5" Id="59" Mpg="2.2"/>
+    <Anhkheg3:PurchaseSummary Cost="1000" Dpg="1000" Date="2007-12-22" Gallons="6.0" Id="42" Mpg="3.3"/>
+    <Anhkheg3:PurchaseSummary Cost="300" Dpg="300" Date="2003-08-23" Gallons="7.000" Id="56" Mpg=".4"/>
+    <Anhkheg3:PurchaseSummary Cost="10,999" Dpg="10,999" Date="2007-05-27" Gallons="0.12" Id="18" Mpg="5.5"/>
+    <Anhkheg3:PurchaseSummary Cost="49.99" Dpg="49.99" Date="2006-05-24, " Gallons="5.120" Id="23" Mpg="6.6"/>
+    <Anhkheg3:PurchaseSummary Cost="25.34" Dpg="25.34" Date="2004-09-19" Gallons="34.56" Id="52" Mpg="7.7"/>
+    <Anhkheg3:PurchaseSummary Cost="100" Dpg="100" Date="2003-08-10" Gallons="9.368" Id="73" Mpg="8.8"/>
+    <Anhkheg3:PurchaseSummary Cost="29.99" Dpg="29.99" Date="2007-09-20" Gallons="2.928" Id="72" Mpg="9.9"/>
+</Anhkheg3:PurchasesCollection>

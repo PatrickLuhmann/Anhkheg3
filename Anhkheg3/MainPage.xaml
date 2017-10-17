@@ -10,7 +10,8 @@
     <Page.Resources>
         <local:SFC x:Key="blah"/>
         <CollectionViewSource x:Name="PurchasesCollectionView"
-                              Source="{x:Bind PurchasesVm.MyPurchasesCollection}"/>
+                              Source="{x:Bind PurchasesVm.MyPurchasesCollection}"
+                              d:Source="{d:DesignData /SampleData/PurchasesCollectionSampleData.xaml}"/>
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -62,7 +63,6 @@
             <TextBlock x:Name="HeaderText" Text="Hello"/>
             <ListView Name="Purchases"
                       ScrollViewer.VerticalScrollBarVisibility="Visible"
-                      Height="300"
                       ItemsSource="{Binding Source={StaticResource PurchasesCollectionView}}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
