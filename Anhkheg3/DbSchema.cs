@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Anhkheg3
 {
-    class DbSchema : DbContext
-    {
+	class DbSchema : DbContext
+	{
 		public DbSet<Vehicle> Vehicles { get; set; }
 		public DbSet<Purchase> Purchases { get; set; }
 

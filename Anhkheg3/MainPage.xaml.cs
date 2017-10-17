@@ -42,10 +42,12 @@ namespace Anhkheg3
 	public sealed partial class MainPage : Page
 	{
 		static int CurrentVehicleIndex = -1;
+		PurchasesViewModel PurchasesVm { get; set; }
 
 		public MainPage()
 		{
 			this.InitializeComponent();
+			PurchasesVm = new PurchasesViewModel();
 			System.Diagnostics.Debug.WriteLine("Exit: MainPage() constructor");
 		}
 
@@ -182,7 +184,7 @@ namespace Anhkheg3
 				Vehicle selVehicle = Vehicles.SelectedItem as Vehicle;
 				HeaderText.Text = "Purchases For " + selVehicle.Name;
 				NumPurchases.Text = "This vehicle has " + selVehicle.Purchases.Count.ToString() + " fuel purchases";
-				Purchases.ItemsSource = GetPurchaseSummariesForVehicle(selVehicle);
+				PurchasesVm.SetNewList(GetPurchaseSummariesForVehicle(selVehicle));
 			}
 		}
 	}
@@ -197,4 +199,29 @@ namespace Anhkheg3
 		public int Id { get; set; } // lower case because this is not a true database object
 	}
 
+	public class PurchasesCollection : ObservableCollection<PurchaseSummary> { }
+
+	public class PurchasesViewModel
+	{
+		private PurchasesCollection purchases = new PurchasesCollection();
+
+		public PurchasesCollection MyPurchasesCollection
+		{
+			get { return this.purchases; }
+		}
+
+		public PurchasesViewModel()
+		{
+		}
+
+		public void SetNewList(List<PurchaseSummary> list)
+		{
+			// Remove whatever was there before.
+			purchases.Clear();
+
+			// Go through the list and duplicate the items.
+			foreach (var obj in list)
+				purchases.Add(obj);
+		}
+	}
 }
